@@ -1,0 +1,5 @@
+# Ensure documentation files are always tracked
+*.md text eol=lf
+TODO.md text eol=lf
+2026-STACK.md text eol=lf
+aquashine-prd*.md text eol=lf
