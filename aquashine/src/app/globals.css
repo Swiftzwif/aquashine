@@ -1,26 +1,147 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* AquaShine Pool Services - 2026 Design System */
+
+/* Custom Theme Variables */
+@theme {
+  /* Primary Color Palette (Pool Blue) */
+  --color-primary-50: #EBF8FF;
+  --color-primary-100: #CAF0F8;
+  --color-primary-200: #90E0EF;
+  --color-primary-300: #00B4D8;
+  --color-primary-400: #0096C7;
+  --color-primary-500: #0077B6;
+  --color-primary-600: #005F8A;
+  --color-primary-700: #004A6E;
+  --color-primary-800: #003652;
+  --color-primary-900: #03045E;
+
+  /* Accent Colors */
+  --color-accent: #03045E;
+  --color-accent-light: #023E8A;
+
+  /* Font Families */
+  --font-sans: 'Geist Sans', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* Base Layer Styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    @apply text-gray-900 bg-white antialiased;
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold tracking-tight text-gray-900;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Component Layer - Reusable Patterns */
+@layer components {
+  /* Container */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section Padding */
+  .section-padding {
+    @apply py-16 md:py-20 lg:py-24;
+  }
+
+  /* Button Variants */
+  .btn-primary {
+    @apply inline-flex items-center justify-center
+           bg-primary-500 hover:bg-primary-600
+           text-white font-semibold
+           px-6 py-3 rounded-lg
+           transition-all duration-200
+           shadow-md hover:shadow-lg
+           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center
+           bg-white hover:bg-gray-50
+           text-primary-600 font-semibold
+           border-2 border-primary-500
+           px-6 py-3 rounded-lg
+           transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+
+  .btn-white {
+    @apply inline-flex items-center justify-center
+           bg-white hover:bg-gray-100
+           text-primary-600 font-semibold
+           px-6 py-3 rounded-lg
+           transition-all duration-200
+           shadow-md hover:shadow-lg;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center
+           text-primary-500 hover:bg-primary-50
+           px-6 py-3 rounded-lg font-semibold
+           transition-all duration-200;
+  }
+
+  /* Card Component */
+  .card {
+    @apply bg-white rounded-2xl shadow-lg border border-gray-100
+           hover:shadow-xl transition-shadow duration-300;
+  }
+
+  /* Form Input */
+  .input-field {
+    @apply w-full px-4 py-3 rounded-lg
+           border border-gray-300
+           focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20
+           transition-all duration-200
+           placeholder:text-gray-400
+           outline-none;
+  }
+
+  /* Section Titles */
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-center text-gray-900;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-gray-600 text-center mt-4 max-w-2xl mx-auto;
+  }
+
+  /* Badge Variants */
+  .badge {
+    @apply inline-flex items-center px-3 py-1
+           rounded-full text-sm font-medium;
+  }
+
+  .badge-subscription {
+    @apply bg-primary-100 text-primary-700;
+  }
+
+  .badge-one-time {
+    @apply bg-green-100 text-green-700;
+  }
+
+  .badge-popular {
+    @apply bg-amber-100 text-amber-700;
+  }
+}
+
+/* Utility Layer - Custom Utilities */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
 }
